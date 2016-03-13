@@ -1,0 +1,191 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{cmap}
+\usepackage[T1]{fontenc} 
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{wrapfig}
+\usepackage[pdftex]{graphicx}
+\usepackage[bf,large,skip=\baselineskip]{caption}
+\usepackage{subcaption}
+\usepackage{textcomp}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{courier}
+\usepackage{chngcntr}
+
+\topmargin = -2.5cm
+\marginparwidth = -1cm
+\marginparsep = 0pt
+\textwidth = 16cm
+\textheight = 25cm
+\oddsidemargin = 0cm
+\parindent = 0.0cm
+\parskip = 0.2cm
+
+\hypersetup{
+    colorlinks,
+    linkcolor=red
+}
+
+
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\normalsize\usefont{T1}{pcr}{m}{n},        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\normalsize\color{mygray},    % comment style
+  deletekeywords={*=},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single,                    % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\normalsize\usefont{T1}{pcr}{b}{n}\color{blue},       % keyword style
+  language=Python,                 % the language of the code
+  otherkeywords={*,...},            % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=15pt,                   % how far the line-numbers are from the code
+  numberstyle=\small\usefont{T1}{pcr}{m}{n}\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\normalsize\color{mygreen},     % string literal style
+  tabsize=4,% sets default tabsize to 4 spaces
+}
+
+
+\lstset{language=Python}
+
+\begin{document}
+
+
+\counterwithin{lstlisting}{subsection}
+\renewcommand{\thelstlisting}{\arabic{subsection}.\arabic{lstlisting}}
+
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} 
+\centering 
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{1.5cm}
+        \includegraphics[height=1.3cm]{msu.jpg}
+    \end{subfigure}
+    \parbox[t][0.2cm][c]{12cm}{
+        \centering
+        \Large Московский государственный университет \\ имени М.~В.~Ломоносова\\[0.2cm]
+        \large Факультет Вычислительной Математики и Кибернетики \\[0.2cm]
+        \large Кафедра Математических Методов Прогнозирования
+    }
+    \begin{subfigure}{1.25cm}    
+        \includegraphics[height=1.25cm]{cmc.jpg}
+    \end{subfigure}
+\end{figure}
+
+
+
+\HRule \\[5.5cm]
+{
+  \upshape
+
+{ 
+    \LARGE
+    Отчет о выполнении задания №1 \\[0.3cm]
+    по практикуму на ЭВМ.
+}
+}\\[4cm]
+
+\begin{flushright}
+{
+    \large
+    \parbox{0.4\textwidth}{
+        Выполнил студент 317 группы \\
+        \emph{Гарипов Тимур Исмагилевич}
+    }
+}
+\end{flushright}
+
+\vspace{9.5cm}
+{\large Москва, \today}
+ 
+    
+
+\vfill
+
+\end{titlepage}
+
+\fontsize{12pt}{14pt}\selectfont
+\tableofcontents
+\pagebreak
+
+
+\section{Описание задания}
+
+Данное задание направлено на освоение студентами языка Python и системы научных вычислений NumPy.
+
+Требуется для каждой из предложенных задач:
+\begin{enumerate}
+    \item
+    Написать на Python + NumPy несколько вариантов кода различной эффективности. Должно быть
+    не менее трёх вариантов, в том числе как минимум один полностью векторизованный вариант и один
+    вариант без векторизации. И третий альтернативный вариант решения, это может быть, например,
+    наиболее хорошо читаемый способ решения или частично векторизованный вариант. Все варианты
+    решения одной задачи должны содержаться в отдельном Python модуле.
+    \item
+    Сравнить в IPython Notebook при помощи \verb"%timeit" скорость работы на нескольких тестовых наборах
+    разного размера (минимум 3).
+    \item
+    Проанализировать полученные данные о скорости работы разных реализаций.
+    \item 
+    Получить выводы.
+\end{enumerate}
+
+Для получения бонусных баллов за задание должны быть выполнены следующие требования:
+
+\begin{itemize}
+    \item
+    Написанный код полностью соответствует style guide PEP 8.
+    \item
+     Ко всем задачам присутствуют автоматические тесты, проверяющие совпадение результатов работы всех
+    вариантов кода. Тесты должны использовать встроенный в Python фреймворк unittest.
+\end{itemize}
+
+
+\pagebreak
+\section{Задачи}
+В описании всех задача предполагается, что модуль \verb"numpy" импортирован под названием \verb"np".
+\subsection{Задча №1}
+
+{\bfseries Условие.} Подсчитать произведение ненулевых элементов на диагонали прямоугольной матрицы. Для 
+\verb"X = np.array([[1, 0, 1], [2, 0, 2], [3, 0, 3], [4, 4, 4]])" ответ 3.
+
+{\bfseries Векторизованное решение.}  
+Векторизованный вариант решения состоит из следующих шагов: выделение диагонали матрицы, нахождение позиций ненулевых 
+элементов на диагонали, вычисление произведения ненулевых элементов.
+Этот вариант представлен на листинге \ref{lst:task1:vect}. \\
+
+\begin{figure}[h]
+\lstinputlisting[caption={Векторизированный вариант}, label={lst:task1:vect}, firstline=11, lastline=17,]{../task1/task1.py}
+\end{figure}
+
+\lstinputlisting[caption={Вариант без векторизации}, label={lst:task1:nonvect}, firstline=20, lastline=30,]{../task1/task1.py}
+
+\lstinputlisting[caption={Альтернативный вариант}, label={lst:task1:alt}, firstline=33, lastline=40,]{../task1/task1.py}
+
+\subsection{Задача №2}
+
+
+
+\end{document}
